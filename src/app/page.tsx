@@ -101,6 +101,13 @@ export default function Home() {
 
   return (
     <div className="mx-auto w-full max-w-lg px-4 py-8">
+      <div className="rounded-lg border border-yellow-500/20 bg-yellow-500/5 p-3 mb-4">
+        <p className="text-xs text-yellow-400 text-center">
+          <strong>Testnet Preview</strong> — This system is for testing only and not suitable for large amounts.
+          The anonymity set is currently too small to provide real privacy, and the protocol has not been audited by external organizations.
+        </p>
+      </div>
+
       <div className="shade-card space-y-6">
         <TabNav active={activeTab} onChange={setActiveTab} />
 
