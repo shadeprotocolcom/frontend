@@ -14,10 +14,10 @@ export function formatBtc(value: bigint, decimals: number = 18): string {
   }
 
   const fracStr = fracPart.toString().padStart(decimals, "0");
-  // Trim trailing zeros but keep at least 4 decimal places for readability,
-  // or fewer if the value is smaller
-  const trimmed = fracStr.replace(/0+$/, "");
-  const display = trimmed.length < 4 ? trimmed.padEnd(4, "0") : trimmed;
+  // Show max 8 decimal places, trim trailing zeros, keep at least 2
+  const capped = fracStr.slice(0, 8);
+  const trimmed = capped.replace(/0+$/, "");
+  const display = trimmed.length < 2 ? trimmed.padEnd(2, "0") : trimmed;
 
   return `${intPart}.${display}`;
 }

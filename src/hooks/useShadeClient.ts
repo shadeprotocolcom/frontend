@@ -116,8 +116,18 @@ export function useShadeClient(): ShadeClientHandle {
         throw new Error("Failed to register with indexer");
       }
 
+      // Restore notes from localStorage (survives page reload)
+      const storageKey = `shade-notes-${address!.toLowerCase()}`;
+      const savedNotes = localStorage.getItem(storageKey);
+      if (savedNotes) {
+        shadeClient.importNotes(savedNotes);
+      }
+
       // Get initial balance
       const balance = await shadeClient.getBalance();
+
+      // Save notes after sync
+      localStorage.setItem(storageKey, shadeClient.exportNotes());
 
       setState((prev) => ({
         ...prev,
@@ -136,6 +146,12 @@ export function useShadeClient(): ShadeClientHandle {
     }
   }, [walletClient, address]);
 
+  const saveNotes = useCallback(() => {
+    if (!clientRef.current || !address) return;
+    const storageKey = `shade-notes-${address.toLowerCase()}`;
+    localStorage.setItem(storageKey, clientRef.current.exportNotes());
+  }, [address]);
+
   const syncBalance = useCallback(async () => {
     if (!clientRef.current) return;
 
@@ -143,6 +159,7 @@ export function useShadeClient(): ShadeClientHandle {
 
     try {
       const balance = await clientRef.current.getBalance();
+      saveNotes();
 
       setState((prev) => ({
         ...prev,
