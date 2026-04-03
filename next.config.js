@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  output: "standalone",
+  // output: "standalone", // disabled — using next start directly
+  transpilePackages: ["@shade-protocol/sdk"],
   webpack: (config) => {
     // Enable WASM support for snarkjs / circomlibjs
     config.experiments = {
@@ -17,6 +18,11 @@ const nextConfig = {
       net: false,
       tls: false,
       readline: false,
+    };
+
+    // Fix ESM package resolution for @noble/* and other ESM-only packages
+    config.resolve.extensionAlias = {
+      ".js": [".ts", ".tsx", ".js", ".jsx"],
     };
 
     return config;

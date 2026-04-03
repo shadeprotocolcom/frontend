@@ -46,7 +46,7 @@ export default function Home() {
           <p className="mt-2 text-shade-muted">
             Private cBTC transactions on Citrea
           </p>
-          <div className="mt-8">
+          <div className="mt-8 flex justify-center">
             <ConnectKitButton />
           </div>
         </div>
@@ -60,7 +60,7 @@ export default function Home() {
         <div className="w-full max-w-md text-center">
           <div className="shade-card">
             <h2 className="text-xl font-semibold text-white">
-              Initialize Shade Account
+              Shade Account
             </h2>
             <p className="mt-2 text-sm text-shade-muted">
               Sign a message to derive your privacy keys. This signature never
@@ -85,7 +85,7 @@ export default function Home() {
                   Sign in wallet...
                 </span>
               ) : (
-                "Sign to initialize"
+                "Sign to Login"
               )}
             </button>
           </div>
@@ -101,13 +101,6 @@ export default function Home() {
 
   return (
     <div className="mx-auto w-full max-w-lg px-4 py-8">
-      <div className="rounded-lg border border-yellow-500/20 bg-yellow-500/5 p-3 mb-4">
-        <p className="text-xs text-yellow-400 text-center">
-          <strong>Testnet Preview</strong> — This system is for testing only and not suitable for large amounts.
-          The anonymity set is currently too small to provide real privacy, and the protocol has not been audited by external organizations.
-        </p>
-      </div>
-
       <div className="shade-card space-y-6">
         <TabNav active={activeTab} onChange={setActiveTab} />
 

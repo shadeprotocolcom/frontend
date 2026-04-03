@@ -52,3 +52,9 @@
     @apply rounded-xl border border-shade-border bg-shade-surface p-6;
   }
 }
+
+/* Hide ConnectKit "What is a wallet?" tooltip and info screens */
+[data-testid="ck-tooltip"],
+[class*="ck-info-button"] {
+  display: none !important;
+}
