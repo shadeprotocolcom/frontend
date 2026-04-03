@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-shade-bg text-shade-text antialiased;
+  }
+
+  /* Custom scrollbar for dark theme */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-shade-border rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-shade-border-hover;
+  }
+}
+
+@layer components {
+  .shade-input {
+    @apply w-full rounded-lg border border-shade-border bg-shade-bg px-4 py-3 text-shade-text
+           placeholder-shade-muted outline-none transition-colors
+           focus:border-shade-green/50 focus:ring-1 focus:ring-shade-green/25;
+  }
+
+  .shade-btn-primary {
+    @apply rounded-lg bg-shade-green px-6 py-3 font-medium text-black transition-all
+           hover:bg-shade-green-dim active:scale-[0.98] disabled:cursor-not-allowed
+           disabled:opacity-40 disabled:hover:bg-shade-green disabled:active:scale-100;
+  }
+
+  .shade-btn-danger {
+    @apply rounded-lg bg-shade-red px-6 py-3 font-medium text-white transition-all
+           hover:bg-shade-red-dim active:scale-[0.98] disabled:cursor-not-allowed
+           disabled:opacity-40 disabled:hover:bg-shade-red disabled:active:scale-100;
+  }
+
+  .shade-card {
+    @apply rounded-xl border border-shade-border bg-shade-surface p-6;
+  }
+}
