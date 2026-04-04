@@ -13,6 +13,8 @@ const config: ShadeConfig = {
   rpcUrl: "https://rpc.citreascan.com",
   contractAddress: process.env.NEXT_PUBLIC_CONTRACT_ADDRESS || "",
   wcbtcAddress: process.env.NEXT_PUBLIC_WCBTC_ADDRESS || "",
+  keyRegistryAddress:
+    process.env.NEXT_PUBLIC_KEY_REGISTRY_ADDRESS || "0xDBeF67AaF7c9917a67f6710a611ED80C8326118d",
   indexerUrl:
     process.env.NEXT_PUBLIC_INDEXER_URL || "https://api.shade-protocol.com",
   proverUrl:
